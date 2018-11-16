@@ -1,27 +1,26 @@
 package exercise2;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 
 public class Exercise2 {
-	public static void save(Classroom classroom, Path filePath) throws IOException {
-		try {
-			ObjectOutputStream sortie = new ObjectOutputStream(
-				new FileOutputStream(String.valueOf(filePath)));
-			sortie.writeObject(classroom);
-			sortie.close();
-		}
-		catch(Exception e){}
+	public static void save(Classroom classroom, Path filePath) {
+		try(OutputStream output = Files.newOutputStream(filePath)){
+			ObjectOutput objectOutput = new ObjectOutputStream(output);
+			objectOutput.writeObject((classroom));
+		} catch (Exception e){}
 	}
 
 	public static Classroom load(Path filePath) {
-
-		return null;
+		try(InputStream input = Files.newInputStream(filePath)){
+			ObjectInput objectInput = new ObjectInputStream(input);
+			Classroom o = null;
+			return (Classroom) objectInput.readObject();
+		} catch (Exception e){}
+		return (Classroom) objectInput.readObject();
 	}
 
 
