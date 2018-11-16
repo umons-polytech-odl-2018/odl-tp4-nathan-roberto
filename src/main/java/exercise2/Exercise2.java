@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 
 public class Exercise2 {
-	public static void save(Classroom classroom, Path filePath) {
+	public static void save(Classroom classroom, Path filePath) throws IOException {
 		try {
 			ObjectOutputStream sortie = new ObjectOutputStream(
 				new FileOutputStream(String.valueOf(filePath)));
@@ -20,14 +20,8 @@ public class Exercise2 {
 	}
 
 	public static Classroom load(Path filePath) {
-		try {
-			ObjectOutputStream sortie = new ObjectOutputStream(
-				new FileOutputStream(String.valueOf(filePath)));
-			return sortie.load(String.valueOf(filePath));
-			sortie.close();
-		}
-		catch(Exception e){}
-		return sortie.load(String.valueOf(filePath));
+
+		return null;
 	}
 
 
