@@ -1,6 +1,8 @@
 package exercise2;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,12 +10,28 @@ import java.time.LocalDate;
 
 public class Exercise2 {
 	public static void save(Classroom classroom, Path filePath) {
-
+		try {
+			ObjectOutputStream sortie = new ObjectOutputStream(
+				new FileOutputStream(String.valueOf(filePath)));
+			sortie.writeObject(classroom);
+			sortie.close();
+		}
+		catch(Exception e){}
 	}
 
 	public static Classroom load(Path filePath) {
-		return null;
+		try {
+			ObjectOutputStream sortie = new ObjectOutputStream(
+				new FileOutputStream(String.valueOf(filePath)));
+			return sortie.load(String.valueOf(filePath));
+			sortie.close();
+		}
+		catch(Exception e){}
+		return sortie.load(String.valueOf(filePath));
 	}
+
+
+
 
 	public static void main(String[] args) throws IOException {
 		Teacher teacher = new Teacher("Claire", "Barnett",
