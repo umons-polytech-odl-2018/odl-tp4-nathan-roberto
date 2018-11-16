@@ -14,18 +14,12 @@ public class Exercise2 {
 		} catch (Exception e){}
 	}
 
-	public static Classroom load(Path filePath) {
-		try(InputStream input = Files.newInputStream(filePath)){
-			ObjectInput objectInput = new ObjectInputStream(input);
-			Classroom o = null;
-			return (Classroom) objectInput.readObject();
-		} catch (Exception e){}
-		return (Classroom) objectInput.readObject();
+	public static Classroom load(Path filePath) throws IOException, ClassNotFoundException {
+		try (InputStream output = Files.newInputStream(filePath)) {
+			ObjectInput objectOutput = new ObjectInputStream(output);
+			return (Classroom) objectOutput.readObject();
+		}
 	}
-
-
-
-
 	public static void main(String[] args) throws IOException {
 		Teacher teacher = new Teacher("Claire", "Barnett",
 			LocalDate.of(1975, 3, 7), new PhoneNumber("+32 65 123 456"),
