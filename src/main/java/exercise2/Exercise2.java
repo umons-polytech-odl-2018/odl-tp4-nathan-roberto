@@ -20,7 +20,7 @@ public class Exercise2 {
 			return (Classroom) objectOutput.readObject();
 		}
 	}
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		Teacher teacher = new Teacher("Claire", "Barnett",
 			LocalDate.of(1975, 3, 7), new PhoneNumber("+32 65 123 456"),
 			new Location("Ho.23", "Houdain"));
