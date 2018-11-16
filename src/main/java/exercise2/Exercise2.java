@@ -7,11 +7,11 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 
 public class Exercise2 {
-	public static void save(Classroom classroom, Path filePath) {
+	public static void save(Classroom classroom, Path filePath) throws IOException {
 		try(OutputStream output = Files.newOutputStream(filePath)){
 			ObjectOutput objectOutput = new ObjectOutputStream(output);
 			objectOutput.writeObject((classroom));
-		} catch (Exception e){}
+		}
 	}
 
 	public static Classroom load(Path filePath) throws IOException, ClassNotFoundException {
